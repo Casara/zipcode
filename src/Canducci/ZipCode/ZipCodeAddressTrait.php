@@ -1,6 +1,9 @@
-<?php namespace Canducci\ZipCode;
+<?php
 
-trait ZipCodeAddressTrait {
+namespace Canducci\ZipCode;
+
+trait ZipCodeAddressTrait
+{
 
     /**
      * Traits ZipCodeAddress
@@ -11,8 +14,6 @@ trait ZipCodeAddressTrait {
      */
     public function zipcodeaddress($uf, $city, $address)
     {
-
         return zipcodeaddress($uf, $city, $address);
-
     }
 }

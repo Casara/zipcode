@@ -1,7 +1,9 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
 
-interface ZipCodeContract {
-    
+namespace Canducci\ZipCode\Contracts;
+
+interface ZipCodeContract
+{
     /**     
      * return ZipCodeInfo
      *
@@ -11,5 +13,4 @@ interface ZipCodeContract {
      * @throws Canducci\ZipCode\ZipCodeException
      */
     public function find($value, $renew = false);
-
 }

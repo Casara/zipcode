@@ -1,9 +1,11 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 use Canducci\ZipCode\Contracts\ZipCodeAddressInfoContract;
 
-class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
-
+class ZipCodeAddressInfo implements ZipCodeAddressInfoContract
+{
     private $valueJson = null;
 
     /**
@@ -11,27 +13,16 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
      */
     public function __construct($valueJson)
     {
-        if (is_string($valueJson))
-        {
-
+        if (is_string($valueJson)) {
             $this->valueJson = $valueJson;
-            if ($this->json_validate_zipcodeaddress() === false)
-            {
-
-                throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
-
+            if ($this->json_validate_zipcodeaddress() === false) {
+                throw new ZipCodeException(trans('canducci-zipcode::zipcode.invalid_format_type_string'));
             }
-
+        } else {
+            throw new ZipCodeException(trans('canducci-zipcode::zipcode.invalid_format_type_string'));
         }
-        else
-        {
-
-            throw new ZipCodeException( trans('canducci-zipcode::zipcode.invalid_format_type_string') );
-
-        }
-
-
     }
+
     /**
      * return JSON Javascript
      *
@@ -39,9 +30,7 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
      */
     public function getJson()
     {
-
-        if (!is_null($this->valueJson))
-        {
+        if (!is_null($this->valueJson)) {
             return $this->valueJson;
         }
 
@@ -55,14 +44,11 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
      */
     public function getArray()
     {
-
-        if (!is_null($this->valueJson))
-        {
+        if (!is_null($this->valueJson)) {
             return json_decode($this->getJson(), true);
         }
 
         return null;
-
     }
 
     /**
@@ -72,12 +58,8 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
      */
     public function getObject()
     {
-
-        if (!is_null($this->valueJson))
-        {
-
+        if (!is_null($this->valueJson)) {
             return json_decode($this->getJson(), false);
-
         }
 
         return null;
@@ -86,24 +68,18 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
 
     public function count()
     {
-
         return count($this->getArray());
-
     }
 
     private function json_validate_zipcodeaddress()
     {
-
-        if (is_string($this->valueJson))
-        {
+        if (is_string($this->valueJson)) {
             $ret = @json_decode($this->valueJson, true);
 
             return json_last_error() === JSON_ERROR_NONE && is_array($ret);
-
         }
 
         return false;
-
     }
 
     /**
@@ -113,9 +89,7 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
     {
         $array = array();
 
-        foreach($this->getArray() as $ret)
-        {
-
+        foreach($this->getArray() as $ret) {
             $array[] = new ZipCodeItem(
                 $ret['cep'],
                 $ret['logradouro'],
@@ -126,10 +100,8 @@ class ZipCodeAddressInfo implements ZipCodeAddressInfoContract {
                 $ret['ibge'],
                 $ret['gia']
             );
-
         }
 
         return $array;
-
     }
 }

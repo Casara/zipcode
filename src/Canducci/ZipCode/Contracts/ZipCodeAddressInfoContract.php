@@ -1,7 +1,9 @@
-<?php namespace Canducci\ZipCode\Contracts;
+<?php
 
-interface ZipCodeAddressInfoContract {
+namespace Canducci\ZipCode\Contracts;
 
+interface ZipCodeAddressInfoContract
+{
     /**
      * return JSON Javascript
      *
@@ -32,5 +34,4 @@ interface ZipCodeAddressInfoContract {
      * @return Array of ZipCodeItem
      */
     public function getZipCodeItem();
-
 }

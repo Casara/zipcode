@@ -2,7 +2,6 @@
 
 if (!function_exists('zipcodeaddress'))
 {
-
     /**
      * @param $uf
      * @param $city
@@ -12,11 +11,8 @@ if (!function_exists('zipcodeaddress'))
      */
     function zipcodeaddress($uf, $city, $address)
     {
-
         $zip_code_address = app('Canducci\ZipCode\Contracts\ZipCodeAddressContract');
 
         return $zip_code_address->find($uf, $city, $address);
-
     }
-
 }

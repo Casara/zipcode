@@ -12,11 +12,8 @@ if (!function_exists('zipcode'))
      */
     function zipcode($value, $renew = false)
     {
-
         $zip_code = app('Canducci\ZipCode\Contracts\ZipCodeContract');
 
         return $zip_code->find($value, $renew);
-
     }
-
 }

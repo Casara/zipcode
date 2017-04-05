@@ -1,9 +1,11 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 use Exception;
 
-class ZipCodeException extends Exception {
-
+class ZipCodeException extends Exception
+{
 	/**
 	 * Construct ZipCodeException
 	 *	 
@@ -11,11 +13,8 @@ class ZipCodeException extends Exception {
 	 * @param int $code
 	 * @param \Exception $previous
 	 */
-    public function __construct($message = "", $code = 0, Exception $previous = null)
+    public function __construct($message = '', $code = 0, Exception $previous = null)
     {
-
         parent::__construct($message, $code, $previous);
-
     }
-    
 }

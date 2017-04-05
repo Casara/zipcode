@@ -1,8 +1,10 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 
-class ZipCodeItem {
-
+class ZipCodeItem
+{
     protected $cep;
     protected $logradouro;
     protected $complemento;
@@ -24,7 +26,6 @@ class ZipCodeItem {
      */
     public function __construct($cep, $logradouro, $complemento, $bairro, $localidade, $uf, $ibge, $gia)
     {
-
         $this->cep = $cep;
         $this->logradouro = $logradouro;
         $this->complemento = $complemento;
@@ -33,7 +34,6 @@ class ZipCodeItem {
         $this->uf = $uf;
         $this->ibge = $ibge;
         $this->gia = $gia;
-
     }
 
 
@@ -103,17 +103,11 @@ class ZipCodeItem {
 
     function __get($name)
     {
-
         return $this->$name;
-
     }
 
     function __set($name, $value)
     {
-
         $this->$name = $value;
-
     }
-
-
 }

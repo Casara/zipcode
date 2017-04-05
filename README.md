@@ -31,24 +31,24 @@ Run the Composer update comand
 In your `config/app.php` add `'Canducci\ZipCode\Providers\ZipCodeServiceProvider'` and `'Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider'` to the end of the `providers` array:
 
 ```PHP
-'providers' => array(
+'providers' => [
     ...,
     Canducci\ZipCode\Providers\ZipCodeServiceProvider::class,
     Canducci\ZipCode\Providers\ZipCodeAddressServiceProvider::class,
 
-),
+],
 ```
 
 At the end of `config/app.php` add `'ZipCode' => 'Canducci\ZipCode\Facade\ZipCode'` and add `'Address'` => 'Canducci\ZipCode\Facades\ZipCodeAddress'  to the `aliases` array:
 
 ```PHP
 
-'aliases' => array(
+'aliases' => [
     ...,
     'ZipCode'   => Canducci\ZipCode\Facades\ZipCode::class,
     'Address'   => Canducci\ZipCode\Facades\ZipCodeAddress::class,
 
-),
+],
 
 ```
 
@@ -88,8 +88,7 @@ __Code Example__
 ```PHP
 public function index(ZipCodeContract $zipcode)
 {
-
-      $zipCodeInfo = $zipcode->find('01414000');
+    $zipCodeInfo = $zipcode->find('01414000');
       
 ```
 
@@ -102,28 +101,26 @@ use Canducci\ZipCode\ZipCodeTrait;
 __Code Example__
 ```PHP
 
-class WelcomeController extends Controller {
-
-	use ZipCodeTrait;
+class WelcomeController extends Controller
+{
+    use ZipCodeTrait;
 	
-	public function index()
-	{
-      		$zipCodeInfo =	$this->zipcode('01414000');
-      	
-      		
+    public function index()
+    {
+        $zipCodeInfo =	$this->zipcode('01414000');	
+
 ```
 ## Summary of How to Use
 __Code__
 ```PHP 
 
-$zipCodeInfo = ZipCode::find('01414000', false); //Facade
+$zipCodeInfo = ZipCode::find('01414000', false); // Facade
 
-$zipCodeInfo = $zipcode->find('01414000', false); //Contracts
+$zipCodeInfo = $zipcode->find('01414000', false); // Contracts
 
 $zipCodeInfo = zipcode('01414000', false); // Helper
 
-$zipCodeInfo = $this->zipcode('01414000', true); //Traist
-
+$zipCodeInfo = $this->zipcode('01414000', true); // Traist
 
 ```
 __Return__
@@ -136,11 +133,9 @@ __Methods ZipCodeInfo__:
 
 ```PHP 
 
-if ($zipCodeInfo) 
-{
-
+if ($zipCodeInfo) {
     $zipCodeInfo->getJson();
-    
+
     {
         "cep": "01414-001",
         "logradouro": "Rua Haddock Lobo",
@@ -149,9 +144,9 @@ if ($zipCodeInfo)
         "uf": "SP",
         "ibge": "3550308", 
         "complemento": ""
-		"gia": 1004
+		    "gia": 1004
     }
-    
+
 }
 
 ```
@@ -160,11 +155,9 @@ if ($zipCodeInfo)
 
 ```PHP   
 
-if ($zipCodeInfo) 
-{
-
+if ($zipCodeInfo) {
     $zipCodeInfo->getArray();
-    
+
     Array
     (
         [cep] => 01414-001
@@ -174,9 +167,9 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308,
         [complemento] => 
-		[gia] => 1004
+		    [gia] => 1004
     )
-    
+
 }
 
 ```
@@ -185,11 +178,9 @@ if ($zipCodeInfo)
 
 ```PHP    
 
-if ($zipCodeInfo) 
-{
-
+if ($zipCodeInfo) {
     $zipCodeInfo->getObject();
-    
+
     stdClass Object
     (
         [cep] => 01414-001
@@ -199,9 +190,9 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308
         [complemento] => 
-		[gia] => 1004
+		    [gia] => 1004
     )
-    
+
 }
 
 ```
@@ -212,11 +203,9 @@ if ($zipCodeInfo)
 
 $zipCodeInfo  = ZipCode::find('01414001', true);
 
-if ($zipCodeInfo) 
-{
-
+if ($zipCodeInfo) {
     $zipCodeInfo->getObject();
-   
+
     stdClass Object
     (
         [cep] => 01414-001
@@ -226,7 +215,7 @@ if ($zipCodeInfo)
         [uf] => SP
         [ibge] => 3550308
         [complemento] => 
-		[gia] => 1004
+		    [gia] => 1004
     )
 }
 
@@ -263,15 +252,11 @@ public function get(Request $request)
     
     $zipcodeaddressinfo = zipcodeaddress($uf,$city,$address);
 
-    if ($zipcodeaddressinfo)
-    {
-
+    if ($zipcodeaddressinfo) {
         return $zipcodeaddressinfo->getJson();
-
     }
-    
-    return Response::json(['error' => 1]);
 
+    return Response::json(['error' => 1]);
 }
 
 ```

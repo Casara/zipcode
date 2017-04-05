@@ -1,8 +1,9 @@
-<?php namespace Canducci\ZipCode;
+<?php
+
+namespace Canducci\ZipCode;
 
 abstract class ZipCodeUf
 {
-
     const AC = 'ac';
 
     const AL = 'al';
@@ -59,15 +60,12 @@ abstract class ZipCodeUf
 
     public static function lists()
     {
-
-        $rf = new \ReflectionClass("Canducci\ZipCode\ZipCodeUf");
+        $rf = new \ReflectionClass('Canducci\ZipCode\ZipCodeUf');
 
         $data = $rf->getConstants();
 
         unset($rf);
 
         return $data;
-
     }
-
 }

@@ -9,7 +9,6 @@ include $dir2;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 
-
 class ZipCodeTest extends TestCase
 {
     use Canducci\ZipCode\ZipCodeTrait;
@@ -52,7 +51,6 @@ class ZipCodeTest extends TestCase
     {                
         $this->assertInstanceOf('Canducci\ZipCode\Contracts\ZipCodeContract',
             $this->getZipCodeInstance());
-
     }
 
     /**
@@ -63,7 +61,6 @@ class ZipCodeTest extends TestCase
         $this->app->bind('GuzzleHttp\ClientInterface','GuzzleHttp\Client');
         $this->assertInstanceOf('Canducci\ZipCode\Contracts\ZipCodeInfoContract',
             \Canducci\ZipCode\Facades\ZipCode::find('01414000'));
-
     }
 
     /**
@@ -109,7 +106,6 @@ class ZipCodeTest extends TestCase
     {
         $zipCodeInfo = $this->getZipCodeInfoInstance();
         $this->assertJson($zipCodeInfo->getJson());
-
     }
 
     /**
@@ -118,8 +114,7 @@ class ZipCodeTest extends TestCase
     public function testZipCodeInfoReturnArray()
     {
         $zipCodeInfo = $this->getZipCodeInfoInstance();
-        $this->assertInternalType('array',
-            $zipCodeInfo->getArray());
+        $this->assertInternalType('array', $zipCodeInfo->getArray());
     }
 
     /**
@@ -128,8 +123,7 @@ class ZipCodeTest extends TestCase
     public function testZipCodeInfoKeyOfArray()
     {
         $zipCodeInfo = $this->getZipCodeInfoInstance();
-        $this->assertArrayHasKey('cep',
-            $zipCodeInfo->getArray());
+        $this->assertArrayHasKey('cep', $zipCodeInfo->getArray());
     }
 
     /**
